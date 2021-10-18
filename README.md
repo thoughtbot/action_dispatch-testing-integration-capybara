@@ -529,3 +529,19 @@ $ bundle
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## About
+
+This project is maintained by Sean Doyle.
+
+![thoughtbot](http://presskit.thoughtbot.com/images/thoughtbot-logo-for-readmes.svg)
+
+This project is maintained and funded by thoughtbot, inc.
+The names and logos for thoughtbot are trademarks of thoughtbot, inc.
+
+We love open source software!
+See [our other projects][community]
+or [hire us][hire] to help build your product.
+
+[community]: https://thoughtbot.com/community?utm_source=github
+[hire]: https://thoughtbot.com/hire-us?utm_source=github
