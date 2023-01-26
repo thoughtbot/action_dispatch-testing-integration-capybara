@@ -10,6 +10,20 @@ class ActionDispatch::Testing::Integration::CapybaraTest < ActionDispatch::Integ
     assert_button "A button"
   end
 
+  test "clears page across multiple requests" do
+    post templates_path, params: { template: <<~HTML }
+      <button>Request 1</button>
+    HTML
+
+    assert_button "Request 1"
+
+    post templates_path, params: { template: <<~HTML }
+      <button>Request 2</button>
+    HTML
+
+    assert_button "Request 2"
+  end
+
   test "supports Capybara::Session#within" do
     post templates_path, params: { template: <<~HTML }
       <section><h1>Hello, World!</h1></section>

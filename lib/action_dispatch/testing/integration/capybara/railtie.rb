@@ -17,6 +17,14 @@ module ActionDispatch
 
                   setup do
                     integration_session.extend(Module.new do
+                      def process(*arguments, **options, &block)
+                        if @page && @page.driver.browser.respond_to?(:reset_cache!)
+                          @page.driver.browser.reset_cache!
+                        end
+
+                        super
+                      end
+
                       def page
                         @page ||= ::Capybara::Session.new(:rack_test, @app)
                       end
