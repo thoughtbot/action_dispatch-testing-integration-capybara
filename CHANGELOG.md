@@ -8,4 +8,8 @@ version via the version links.
 
 ## main
 
-* Invoke [Capybara::RackTest::Browser#reset_cache!](https://github.com/teamcapybara/capybara/blob/master/lib/capybara/rack_test/browser.rb#L112-L114) while issuing multiple requests
+## 0.1.1 (Jan 26, 2023)
+
+*   Invoke [Capybara::RackTest::Browser#reset_cache!](https://github.com/teamcapybara/capybara/blob/master/lib/capybara/rack_test/browser.rb#L112-L114) while issuing multiple requests
+
+    *Sean Doyle*
