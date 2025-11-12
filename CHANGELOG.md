@@ -8,6 +8,8 @@ version via the version links.
 
 ## main
 
+## 0.2.0 (Nov 12, 2025)
+
 *   Expand CI matrix to include newer Rails versions: `7.2`, `8.0`, `8.1`
 
     *Sean Doyle*

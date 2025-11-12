@@ -6,7 +6,7 @@ Use [Capybara][] from within [ActionDispatch::IntegrationTest][].
 
 Use [Capybara][] selectors in tests outside of your System Test suite:
 
-```diff
+```ruby
  class SessionsTest < ActionDispatch::IntegrationTest
    test "new" do
      get new_session_path
@@ -45,7 +45,7 @@ To use the gem with `minitest`, add the following entry, making sure to declare
 
 ```ruby
 gem "action_dispatch-testing-integration-capybara",
-  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.1.0",
+  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.2.0",
   require: "action_dispatch/testing/integration/capybara/minitest"
 ```
 
@@ -62,7 +62,7 @@ To use the gem with `rspec`, add the following entry, making sure to declare
 
 ```ruby
 gem "action_dispatch-testing-integration-capybara",
-  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.1.0",
+  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.2.0",
   require: "action_dispatch/testing/integration/capybara/rspec"
 ```
 
