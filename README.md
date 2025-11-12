@@ -2,6 +2,75 @@
 
 Use [Capybara][] from within [ActionDispatch::IntegrationTest][].
 
+## Usage
+
+Use [Capybara][] selectors in tests outside of your System Test suite:
+
+```diff
+ class SessionsTest < ActionDispatch::IntegrationTest
+   test "new" do
+     get new_session_path
+
+     assert_title "Sign in"
+     assert_element "main", "aria-labelledby": true do |main|
+       assert_css main, "h1", id: main["aria-labelledby"], text: "Sign in"
+       assert_field main, "Email address", type: "email"
+       assert_field main, "Password", type: "password"
+       assert_button main, "Sign in", type: "submit"
+     end
+   end
+ end
+```
+
+## Installation
+
+This gem re-opens existing Action Dispatch-provided classes. That fact is
+reflected in the gem's name. Since the name is dependent on the structure of the
+`action_dispatch/` directory within the `action_pack` gem, and that gem is part
+of Rails' core suite of packages, this project _will not_ be published to
+Rubygems in its current form.
+
+There is an on-going discussion (see [rails/rails#41291][] and
+[rails/rails#43361][]) about building this behavior into Rails itself. Until
+that discussion concludes, this gem will serve as a temporary solution.
+
+To reflect the temporary nature of this project, `Gemfile` entries should refer
+to the GitHub URL and release tags with the `github:` and `tag:` options.
+
+Install with `minitest`
+---
+
+To use the gem with `minitest`, add the following entry, making sure to declare
+`require: "action_dispatch/testing/integration/capybara/minitest"`:
+
+```ruby
+gem "action_dispatch-testing-integration-capybara",
+  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.1.0",
+  require: "action_dispatch/testing/integration/capybara/minitest"
+```
+
+And then execute:
+```bash
+$ bundle
+```
+
+Install with `rspec`
+---
+
+To use the gem with `rspec`, add the following entry, making sure to declare
+`require: "action_dispatch/testing/integration/capybara/rspec"`:
+
+```ruby
+gem "action_dispatch-testing-integration-capybara",
+  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.1.0",
+  require: "action_dispatch/testing/integration/capybara/rspec"
+```
+
+And then execute:
+```bash
+$ bundle
+```
+
 ## Why?
 
 If your application relies on your server to generate and transmit _all_ of its
@@ -476,55 +545,6 @@ suite's `type: :request` tests, check out the
 [declaring custom Capybara selectors]: https://github.com/teamcapybara/capybara#xpath-css-and-selectors
 [`citizensadvice/capybara_accessible_selectors`]: https://github.com/citizensadvice/capybara_accessible_selectors#documentation
 [`thoughtbot/action_dispatch-testing-integration-capybara`]: https://github.com/thoughtbot/action_dispatch-testing-integration-capybara
-
-## Installation
-
-This gem re-opens existing Action Dispatch-provided classes. That fact is
-reflected in the gem's name. Since the name is dependent on the structure of the
-`action_dispatch/` directory within the `action_pack` gem, and that gem is part
-of Rails' core suite of packages, this project _will not_ be published to
-Rubygems in its current form.
-
-There is an on-going discussion (see [rails/rails#41291][] and
-[rails/rails#43361][]) about building this behavior into Rails itself. Until
-that discussion concludes, this gem will serve as a temporary solution.
-
-To reflect the temporary nature of this project, `Gemfile` entries should refer
-to the GitHub URL and release tags with the `github:` and `tag:` options.
-
-Install with `minitest`
----
-
-To use the gem with `minitest`, add the following entry, making sure to declare
-`require: "action_dispatch/testing/integration/capybara/minitest"`:
-
-```ruby
-gem "action_dispatch-testing-integration-capybara",
-  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.1.0",
-  require: "action_dispatch/testing/integration/capybara/minitest"
-```
-
-And then execute:
-```bash
-$ bundle
-```
-
-Install with `rspec`
----
-
-To use the gem with `rspec`, add the following entry, making sure to declare
-`require: "action_dispatch/testing/integration/capybara/rspec"`:
-
-```ruby
-gem "action_dispatch-testing-integration-capybara",
-  github: "thoughtbot/action_dispatch-testing-integration-capybara", tag: "v0.1.0",
-  require: "action_dispatch/testing/integration/capybara/rspec"
-```
-
-And then execute:
-```bash
-$ bundle
-```
 
 ## License
 
